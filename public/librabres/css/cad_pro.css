@@ -1,0 +1,26 @@
+.professor input {
+    font-family: 'Roboto';
+    font-size: normal;
+    color: black;
+    border: none;
+    outline: none;
+
+}
+
+form input[type ="text"] {
+    border-bottom:2px solid black;    
+    background:transparent;
+    height:30px;
+}
+
+form [type="submit"] {
+    height: 45px;
+    display: block;
+    background-color: #413DBB;
+
+    border-radius: 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
