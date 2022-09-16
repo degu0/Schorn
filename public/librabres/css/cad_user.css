@@ -1,0 +1,107 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #356FBA 0%, #413DBB 71.52%);
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+}
+
+.image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.title {
+    color: #36383C;
+    font-family: 'Raleway';
+    font-weight: 2;
+}
+.form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 3rem;
+}
+
+.head {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input_group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.input-box input {
+    margin: 10px;
+    padding: 10px;
+    font-size: 17px;
+    border-bottom:2px solid #36383C;    
+    height:30px;
+    font-family: 'Roboto';
+    font-size: normal;
+    color: #36383C;
+    border: none;
+    outline: none;
+    
+}
+
+.input-box input:hover {
+    background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+    outline: 1px solid #6c63ff;
+}
+
+.input-box label,
+.gender-title h6 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+.enter_button button {
+    width: 20%;
+    margin-top: 30px;
+    border: none;
+    background-color: #413DBB;
+    padding: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.enter_button button:hover {
+    background-color: #4f4acf;
+}
+

@@ -7,7 +7,9 @@ use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Http\Message\ResponseInterface;
 use Schorn\controller\ErroController;
 
-$requestRoute = array_key_exists("PATH_INFO", $_SERVER) ? $_SERVER["PATH_INFO"] : '/';
+session_start();
+
+$requestRoute = array_key_exists("PATH_INFO", $_SERVER) ? $_SERVER["PATH_INFO"] : "/";
 $routes = require_once __DIR__ . "/../config/routes.php";
 
 $psr17Factory = new Psr17Factory();
@@ -25,34 +27,31 @@ $serverRequest = $creator->fromGlobals();
 if (array_key_exists($requestRoute, $routes)) {
     $controller = new $routes[$requestRoute];
     $response = $controller->handle($serverRequest);
-    //sendResponse($response);
+    sendResponse($response);
 } else {
-    //$controller = new ErroController();
+    $controller = new ErroController();
     $response = $controller->handle($serverRequest);
-    //sendResponse($response);
-    echo "Pagina não encontrada";
+    sendResponse($response);
 }
 
 function sendResponse(ResponseInterface $response)
 {
     foreach ($response->getHeaders() as $name => $values) {
         foreach ($values as $value) {
-            header(sprintf('%s: &s', $name, $value), false);
+            header(sprintf('%s: %s', $name, $value), false);
         }
     }
 
+    //laminas-httphandlerrunner
     $reasonPhrase = $response->getReasonPhrase();
-    $statusCode = $response->getReasonPhrase();
+    $statusCode   = $response->getStatusCode();
 
-    header(
-        sprintf(
-            'HTTP/%s %d%s',
-            $response->getProtocolVersion(),
-            $statusCode,
-            $reasonPhrase ? ' ' . $reasonPhrase : ''
-        ),
-        true,
-        $statusCode
-    );
+    header(sprintf(
+        'HTTP/%s %d%s',
+        $response->getProtocolVersion(),
+        $statusCode,
+        $reasonPhrase ? ' ' . $reasonPhrase : ''
+    ), true, $statusCode);
+
     echo $response->getBody();
 }
